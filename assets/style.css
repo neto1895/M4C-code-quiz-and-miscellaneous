@@ -1,0 +1,38 @@
+/* Set default styles for the whole page */
+* {
+    box-sizing: border-box;
+  }
+  /* This helps to keep the color palette consistent and makes it easy to change the colors globally by just modifying the variable's value. */
+  :root{
+    --color1: #cfbb61;   
+    --color2: rgb(31 36 36);
+    --color3: #fff;
+    --color4: #333;
+  }
+  
+  body {
+      font-family: sans-serif;
+      margin: 0;
+      padding: 0;
+      color: var(--color2);
+    }
+  
+    /* Style the header */
+      header {
+      background-color: var(--color4);
+      color: var(--color1);
+      display: flex;
+      flex-direction: row;
+      justify-content:space-between;
+      flex-wrap: wrap;
+  
+      align-items: center;
+      padding: 10px 10px 5px 00px;
+      }
+      /* inside the header */
+        header h1 {
+        margin: 0;
+        padding: 5px 1% 5px 6%;
+        background-color: var(--color1);
+        color: var(--color4);
+        }
