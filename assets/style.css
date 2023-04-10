@@ -103,6 +103,16 @@
 
     .btn-group-lg>.btn, .btn-lg {
         padding: 0.5rem 1rem;
-        font-size: 5rem;
+        font-size: 4rem;
         border-radius: 1rem;
+    }
+
+    div.Start {
+        display: flex;
+        flex-direction: column;
+        align-items: center; 
+    }
+    div.btn-group-toggle{
+              display: flex;
+        align-items: center;   
     }
