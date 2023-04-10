@@ -13,12 +13,20 @@
 <body>
     <header>
 
-      <h1>Quiz</h1>
+      <h1>Select the Quiz</h1>
 
       <nav>
-        <a href="#">1</a>
-        <a href="#">2</a>
-        <a href="#">3</a>
+      <div class="btn-group btn-group-toggle" data-toggle="buttons">
+        <label class="btn btn-secondary">
+          <input type="radio" name="options" id="option1" autocomplete="off" checked> Code Quiz
+        </label>
+        <label class="btn btn-secondary">
+          <input type="radio" name="options" id="option2" autocomplete="off"> Bird Quiz
+        </label>
+        <label class="btn btn-secondary">
+          <input type="radio" name="options" id="option3" autocomplete="off"> History Quiz
+        </label>
+      </div>
       </nav>
     </header>
   
@@ -87,7 +95,9 @@
             <button class="btn btn-outline-secondary upload_score" type="button">Upload</button>
           </div>
         </div>
-        <div>
+        <div class="Start">
+          <p>Try to answer the following questions within the time limit</p>
+          <p>Keep in mind that incorrect answers will penalize your score/time by ten seconds</p>
           <button type="button" class="btn btn-warning btn-lg btn-block StartQ">Start Quiz</button>
         </div>
 
@@ -96,7 +106,7 @@
             <div class="card-header"></div>
             <div class="card-body">
               <h2 class="card-title">High Scores</h2>
-              <p class="card-text">username user_score.</p>
+              <ul id="score-list"></ul>
               <a href="#" class="btn btn-primary play_again">Play Again!</a>
             </div>
             <div class="card-footer text-muted"></div>

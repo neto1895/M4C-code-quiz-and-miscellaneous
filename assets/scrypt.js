@@ -7,19 +7,128 @@ var option_c = document.querySelector(".option_c");
 var option_d = document.querySelector(".option_d");
 var correctans = document.querySelector(".correct");
 var incorrectans = document.querySelector(".incorrect");
-var array_qstns = ["q1","q2","q3"];
-var array_opt_a = ["1a","2a","3a"];
-var array_opt_b = ["1b","2b","3b"];
-var array_opt_c = ["1c","2c","3c"];
-var array_opt_d = ["1d","2d","3d"];
-var correct_answer = ["b","c","a"];
+var array_qstns = ["q1","q2","q3","q4","q5"];
+var array_opt_a = ["1a","2a","3a","4o","5,0"];
+var array_opt_b = ["1a","2a","3a","4o","5,0"];
+var array_opt_c = ["1a","2a","3a","4o","5,0"];
+var array_opt_d = ["1a","2a","3a","4o","5,0"];
+var correct_answer = ["c","c","d","c","d"];
+var correct_answer2 = ["c","c","d","c","d"];
+
+var code_qstns = ["Commonly used data types DO Not Include: ","The condition in an if / else statement is enclosed with ","Arrays in JavaScript can be used to store ","String values must be enclosed within _______ when being assigned to variables. ","A very useful tool used during development and debugging for printing content to the debugger is: " ]
+var code_opt_a = ["1. strings ","1. quotes ","1. numbers and strings ","1. commas ","1. JavaScript"]
+var code_opt_b = ["2. booleans ","2. curly brackets ","2. Other arrays ","2. curly brackets ","2. terminal/bash "]
+var code_opt_c = ["3. alerts ","3. parenthesis ","3. booleans ","3. quotes ","3. for loops "]
+var code_opt_d = ["4. numbers ","4. square brackets ","4. all of the above ","4. parenthesis ","4. console.log "]
+
+
+var birdQuestions = [  'Which of the following birds is known for its ability to mimic human speech?',  'Which of the following birds is known for its distinctive dance to attract a mate?',  'Which of the following birds has the largest wingspan?',  'Which of the following birds is known for its ability to hover in mid-air?',  'Which of the following birds is known for its bright blue feathers?'];
+
+var birdOptionA = ['Toucan',  'Flamingo',  'Bald Eagle',  'Owl',  'Blue Jay'];
+var birdOptionB = [  'Parrot',  'Ostrich',  'Golden Eagle',  'Woodpecker',  'American Robin'];
+var birdOptionC = [  'Crow',  'Penguin',  'Albatross',  'Sparrow',  'Cardinal'];
+var birdOptionD = [  'Eagle',  'Hummingbird',  'Peregrine Falcon',  'Kestrel',  'Chickadee'];
+
+
+var ancientHistoryQuestions = [  'Who was the first emperor of Rome?',  'Which civilization built Machu Picchu?',  'What was the capital of the ancient Persian Empire?',  'Who was the leader of the Mongol Empire during its peak?',  'Which ancient civilization is known for building the Great Pyramids of Giza?'];
+
+var ancientHistoryOptionA = [  'Julius Caesar',  'Inca',  'Babylon',  'Genghis Khan',  'Sumerians'];
+var ancientHistoryOptionB = [  'Augustus',  'Maya',  'Persepolis',  'Kublai Khan',  'Phoenicians'];
+var ancientHistoryOptionC = [  'Mark Antony',  'Aztec',  'Ecbatana',  'Attila the Hun',  'Greeks'];
+var ancientHistoryOptionD = [  'Nero',  'Egyptian',  'Susa',  'Timur',  'Egyptians'];
+var ancientHistoryCorrectAnswers = ['b', 'a', 'b', 'a', 'd'];
+
+
+
+
+
 var qstn_num = 0;
 var user_answer = [];
 var timer;
 var timerCount;
 var save_score;
 
+var username_score = [];
+
 timerCount = 75;
+
+
+function select_quiz(){
+  if(document.getElementById("option1").checked){
+    array_qstns = code_qstns;
+    array_opt_a = code_opt_a;
+    array_opt_b = code_opt_b;
+    array_opt_c = code_opt_c;
+    array_opt_d = code_opt_d;
+    correct_answer = correct_answer2;
+  } else if (document.getElementById("option2").checked){
+    array_qstns = birdQuestions;
+    array_opt_a = birdOptionA;
+    array_opt_b = birdOptionB;
+    array_opt_c = birdOptionC;
+    array_opt_d = birdOptionD;
+    correct_answer = correct_answer2;
+  } else if (document.getElementById("option3").checked){
+    array_qstns = ancientHistoryQuestions;
+    array_opt_a = ancientHistoryOptionA;
+    array_opt_b = ancientHistoryOptionB;
+    array_opt_c = ancientHistoryOptionC;
+    array_opt_d = ancientHistoryOptionD;
+    correct_answer = ancientHistoryCorrectAnswers;
+  }
+}
+
+
+
+
+
+
+function init() {
+  var stored_username_score = JSON.parse(localStorage.getItem("username_score"));
+
+  if (stored_username_score !== null) {
+    username_score = stored_username_score;
+  }
+}
+
+function upload(){
+  upload_score_user();
+  display_score_records();
+  go_high_scores_page();
+  
+}
+
+function display_score_records(){
+  document.getElementById("score-list").innerHTML = "";
+
+  for (var i = 0; i < username_score.length; i++) {
+    var usnm = username_score[i].username;
+    var scr = username_score[i].score;
+    var li = document.createElement("li");
+    li.textContent = usnm + "    ------   " + scr;
+    li.setAttribute("data-index", i);
+
+    document.getElementById("score-list").appendChild(li);
+  }
+
+
+}
+
+function upload_score_user(){
+  username_score.push({
+    username: document.querySelector(".form-control").value.trim(),
+    score: save_score
+  })
+  document.querySelector(".form-control").value = "";
+  save_score = undefined;
+
+  localStorage.setItem("username_score", JSON.stringify(username_score));
+}
+
+function page_scores(){
+  display_score_records();
+  go_high_scores_page();
+}
 
 function go_high_scores_page(){
   document.querySelector(".high-scores-page").classList.remove("d-none");
@@ -29,7 +138,7 @@ function go_high_scores_page(){
   document.querySelector(".incorrect-mark").classList.add("d-none");
   document.querySelector(".user_score").classList.add("d-none");
   document.querySelector(".input-group").classList.add("d-none");
-  start_Q.classList.add("d-none");
+  document.querySelector(".Start").classList.add("d-none");
 }
 function reset(){
   disabled_btn()
@@ -53,7 +162,7 @@ function resetx2(){
   document.querySelector(".times_up").classList.add("d-none");
   document.querySelector(".user_score").classList.add("d-none");
   document.querySelector(".input-group").classList.add("d-none");
-  start_Q.classList.remove("d-none");
+  document.querySelector(".Start").classList.remove("d-none");
   timerElement.textContent = "--";
   correctans.textContent = "";
 }
@@ -68,7 +177,7 @@ function start_game_display(){
   document.querySelector(".times_up").classList.add("d-none");
   document.querySelector(".user_score").classList.add("d-none");
   document.querySelector(".input-group").classList.add("d-none");
-  start_Q.classList.add("d-none");
+  document.querySelector(".Start").classList.add("d-none");
   correctans.textContent = "";
 }
 
@@ -81,7 +190,7 @@ function times_up(){
   document.querySelector(".times_up").classList.remove("d-none");
   document.querySelector(".user_score").classList.add("d-none");
   document.querySelector(".input-group").classList.add("d-none");
-  start_Q.classList.add("d-none");
+  document.querySelector(".Start").classList.add("d-none");
 
   correctans.textContent = "Time's Up!";
   
@@ -140,22 +249,18 @@ function dispQuestion() {
 }
 
 function answer_a(){
-  console.log("testA")
   user_answer[qstn_num] = "a";
   post_answer();
 }
 function answer_b(){
-  console.log("testB")
   user_answer[qstn_num] = "b";
   post_answer();
 }
 function answer_c(){
-  console.log("testC")
   user_answer[qstn_num] = "c";
   post_answer();
 }
 function answer_d(){
-  console.log("testD")
   user_answer[qstn_num] = "d";
   post_answer();
 }
@@ -196,14 +301,12 @@ function review_answer(){
         if (qstn_num === correct_answer.length && timerCount > 0) {
           // Clears interval and stops timer
           clearInterval(timer);
-          console.log(timerCount + "quiz end win")
         }
       }
       // Tests if time has run out
       if (timerCount === 0) {
         // Clears interval
         clearInterval(timer);
-        console.log(timerCount + "quiz ends zero")
         times_up();
       }
       if (timerCount < 0){
@@ -222,8 +325,8 @@ function review_answer(){
   option_c.addEventListener("click",answer_c);
   option_d.addEventListener("click",answer_d);
 
-  document.querySelector(".high-scores-btn").addEventListener("click",go_high_scores_page);
-  document.querySelector(".upload_score").addEventListener("click",go_high_scores_page);
+  document.querySelector(".high-scores-btn").addEventListener("click",page_scores);
+  document.querySelector(".upload_score").addEventListener("click",upload);
   document.querySelector(".reset-btn").addEventListener("click",reset);
   document.querySelector(".play_again").addEventListener("click",play_again);
   
@@ -233,8 +336,11 @@ function review_answer(){
   }
 
   function start_Quiz() {
+    select_quiz();
     start_game_display();
     qstn_num = 0;
     startTimer();
     dispQuestion();
   }
+
+  init();
