@@ -14,6 +14,7 @@
     <header>
 
       <h1>Quiz</h1>
+
       <nav>
         <a href="#">1</a>
         <a href="#">2</a>
@@ -22,11 +23,12 @@
     </header>
   
     <section class="container" id="container1">
+
       <div>
-        <a class="view-high-scores">View high scores</a>
+        <button type="button" class="btn btn-light high-scores-btn">High Scores</button>
       </div>
       <div>
-        <a class="reset">Reset</a>
+        <button type="button" class="btn btn-light reset-btn">Reset</button>
       </div>
       <div>
         <a class="timer-count">--</a>
@@ -35,24 +37,77 @@
     </section>
   
     <main>
-      <section class="container" id="container2">
+      <section class="container d-none" id="container2">
         <h2 class="question">Question</h2>
-       
         <div class="btn-group-vertical">
           <button type="button" class="btn btn-outline-primary option_a" id="opta">A</button>
           <button type="button" class="btn btn-outline-primary option_b" id="optb">B</button>
           <button type="button" class="btn btn-outline-primary option_c" id="optc">C</button>
           <button type="button" class="btn btn-outline-primary option_d" id="optd">D</button>
         </div>
+    
+      </section>
+        <div class="results">
+          <div class="correct-mark d-none">
+            <svg xmlns="http://www.w3.org/2000/svg" width="152" height="152" fill="currentColor" class="bi bi-check-circle" viewBox="0 0 16 16">
+              <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+              <path d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z"/>
+            </svg>
+          </div>
+          <div class="incorrect-mark d-none">
+            <svg xmlns="http://www.w3.org/2000/svg" width="152" height="152" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
+              <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+              <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+            </svg>
+          </div>
+          <div class="times_up d-none">
+            <svg xmlns="http://www.w3.org/2000/svg" width="152" height="152" fill="currentColor" class="bi bi-clock" viewBox="0 0 16 16">
+              <path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z"/>
+              <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0z"/>
+            </svg>
+          </div>
+
+          <div>
+            <h2 class="correct incorrect"></h2>
+          </div>
+        </div>    
+      <section class="container" id="container3">
+        <div class="user_score d-none">
+          <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="currentColor" class="bi bi-balloon-fill" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M8.48 10.901C11.211 10.227 13 7.837 13 5A5 5 0 0 0 3 5c0 2.837 1.789 5.227 4.52 5.901l-.244.487a.25.25 0 1 0 .448.224l.04-.08c.009.17.024.315.051.45.068.344.208.622.448 1.102l.013.028c.212.422.182.85.05 1.246-.135.402-.366.751-.534 1.003a.25.25 0 0 0 .416.278l.004-.007c.166-.248.431-.646.588-1.115.16-.479.212-1.051-.076-1.629-.258-.515-.365-.732-.419-1.004a2.376 2.376 0 0 1-.037-.289l.008.017a.25.25 0 1 0 .448-.224l-.244-.487ZM4.352 3.356a4.004 4.004 0 0 1 3.15-2.325C7.774.997 8 1.224 8 1.5c0 .276-.226.496-.498.542-.95.162-1.749.78-2.173 1.617a.595.595 0 0 1-.52.341c-.346 0-.599-.329-.457-.644Z"/>
+          </svg>
+          <h2>Congratulations!</h2>
+          <a>Your score: </a>
+          <a class="final_score">time remaining</a>
+        </div>
+
+        <div class="input-group mb-3 d-none">
+          <input type="text" class="form-control" placeholder="Enter username" aria-label="Recipient's username" aria-describedby="basic-addon2">
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary upload_score" type="button">Upload</button>
+          </div>
+        </div>
+        <div>
+          <button type="button" class="btn btn-warning btn-lg btn-block StartQ">Start Quiz</button>
+        </div>
+
+        <div class="high-scores-page d-none">
+          <div class="card text-center">
+            <div class="card-header"></div>
+            <div class="card-body">
+              <h2 class="card-title">High Scores</h2>
+              <p class="card-text">username user_score.</p>
+              <a href="#" class="btn btn-primary play_again">Play Again!</a>
+            </div>
+            <div class="card-footer text-muted"></div>
+          </div>
+
+        </div>
       </section>
 
-      <section class="container" id="container3">
-        <h3 class="correct incorrect">Results</h3>
       </section>
     </main>
-    <footer>
-        <h4>this page was created with love by ECR - see more here</h4>
-    </footer>
+
     <script src="./assets/scrypt.js"></script>
   </body>
   
