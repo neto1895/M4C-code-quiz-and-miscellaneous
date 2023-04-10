@@ -16,10 +16,15 @@
       padding: 0;
       color: var(--color2);
     }
+
+    a {
+        color: #333;
+        text-decoration: unset;
+    }
   
     /* Style the header */
       header {
-      background-color: var(--color1);
+
       color: var(--color4);
       display: flex;
       flex-direction: column;
@@ -36,7 +41,7 @@
         }
 
     .container{
-        background-color: var(--color3);
+
         color: var(--color2);
         display: flex;
         flex-direction: column;
@@ -47,29 +52,57 @@
     }
 
     #container1.container {
-        background-color: violet;
+
         display: flex;
         flex-direction: row;
         justify-content: space-evenly;
     }
 
     #container2.container{
-        background-color: indianred;
+
         display: flex;
         flex-direction: column;
         align-items: flex-start;
     }
-    #container3.container{
-        font-style: italic;
-        color: aqua;
-        padding-top: 15px;
-        background-color: seagreen;
-        align-items: flex-start;
+
+    .results{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 10px 10px 10px 10px;
     }
+
+    .correct-mark{
+        color: green;
+    }
+    .incorrect-mark{
+        color: red;
+    }
+
+    #container3.container{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .user_score{
+        color: #ffc107;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 10px 10px 10px 10px;
+    }
+
 
     h4{
         display: flex;
         font-style:italic;
         color: var(--color4);
         align-items: center;
+    }
+
+    .btn-group-lg>.btn, .btn-lg {
+        padding: 0.5rem 1rem;
+        font-size: 5rem;
+        border-radius: 1rem;
     }
