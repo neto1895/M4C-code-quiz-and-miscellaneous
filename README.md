@@ -12,7 +12,7 @@ This is a quiz page that can be selected the theme quiz by setting the toggle on
 (https://neto1895.github.io/M4C-code-quiz-and-miscellaneous/#)
 
 The following image shows the application first look and functionality.
-![Quiz page demo](./Assets/images/deployedpage.gif)
+![Quiz page demo](./assets/images/deployedpage.gif)
 
 
 ## Usage
