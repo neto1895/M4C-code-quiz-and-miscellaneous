@@ -13,7 +13,7 @@ This is a quiz page that can be selected the theme quiz by setting the toggle on
 
 The following image shows the application first look and functionality.
 
-![Quiz page demo](./Assets/images/deployedpage.gif)
+![Quiz page demo](./assets/images/deployedpage.gif)
 
 
 
